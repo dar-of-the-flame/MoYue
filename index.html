@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>墨阅 | Приватная читалка</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="color-fixes.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Фоновые элементы -->
+    <div class="bg-elements">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+        <div class="bg-circle circle-4"></div>
+        <div class="bg-circle circle-5"></div>
+        <div class="bg-circle circle-6"></div>
+        <div class="bg-circle circle-7"></div>
+        <div class="bg-circle circle-8"></div>
+        <div class="bg-ripple ripple-1"></div>
+        <div class="bg-ripple ripple-2"></div>
+        <div class="bg-ripple ripple-3"></div>
+        <div class="bg-ripple ripple-4"></div>
+        <div class="bg-ripple ripple-5"></div>
+        <div class="bg-bubble bubble-1"></div>
+        <div class="bg-bubble bubble-2"></div>
+        <div class="bg-bubble bubble-3"></div>
+        <div class="bg-bubble bubble-4"></div>
+        
+        <!-- Китайские иероглифы -->
+        <div class="bg-brush brush-1">書</div>
+        <div class="bg-brush brush-2">墨</div>
+        <div class="bg-brush brush-3">閱</div>
+        <div class="bg-brush brush-4">讀</div>
+        <div class="bg-brush brush-5">文</div>
+        <div class="bg-brush brush-6">字</div>
+        
+        <!-- Линии -->
+        <div class="bg-line line-1"></div>
+        <div class="bg-line line-2"></div>
+        <div class="bg-line line-3"></div>
+        
+        <div class="bg-wave"></div>
+        <div class="bg-paper-texture"></div>
+    </div>
+
+    <!-- Хедер с навигацией (только на главной) -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <div class="logo-icon">卷</div>
+                    <h1>墨阅</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link active">Главная</a></li>
+                    <li><a href="#features" class="nav-link">Возможности</a></li>
+                    <li><a href="#library" class="nav-link">Библиотека</a></li>
+                    <li><a href="#reviews" class="nav-link">Отзывы</a></li>
+                    <li><a href="library.html" class="nav-btn">Начать читать</a></li>
+                </ul>
+                <div class="settings-toggle" id="settingsToggle">
+                    <i class="fas fa-cog"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero секция -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Чтение без следов</h2>
+                    <p>Приватная читалка для закрытого круга. Загрузил книгу — читаешь. Поделился QR-кодом — друг получил. Никаких серверов, аккаунтов и слежки.</p>
+                    <div class="hero-buttons">
+                        <a href="#features" class="btn-primary">Узнать больше</a>
+                        <a href="library.html" class="btn-secondary">Начать читать</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-placeholder">
+                        <div class="wall"></div>
+                        <div class="person left">
+                            <div class="laptop"></div>
+                        </div>
+                        <div class="person right">
+                            <div class="phone"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества (теперь перед библиотекой) -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Почему 墨阅?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Полная приватность</h3>
+                    <p>Книги хранятся только в вашем браузере. Никаких серверов, слежки или истории чтения.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <h3>Мгновенный шаринг</h3>
+                    <p>QR-код = целая книга. Друг сканирует и начинает читать. Без регистрации и смс.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <h3>Любые форматы</h3>
+                    <p>DOCX, TXT, PDF — просто перетащите файл. Никаких конвертаций и ожидания.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud-moon"></i>
+                    </div>
+                    <h3>Читайте где угодно</h3>
+                    <p>Работает полностью оффлайн. Настройте тему, шрифты и цвета под себя.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Библиотека (после возможностей) -->
+    <section class="library-preview" id="library">
+        <div class="container">
+            <h2 class="section-title">Ваша приватная библиотека</h2>
+            <div class="library-demo" id="libraryPreview">
+                <!-- Книги будут загружаться динамически в одну строку -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <h2 class="section-title">Что говорят читатели</h2>
+            <div class="reviews-wrapper">
+                <div class="reviews-slider">
+                    <div class="reviews-container">
+                        <div class="review-card">
+                            <div class="review-text">
+                                "Наконец-то можно делиться книгами с друзьями без копирайтных заморочек. QR-код — гениально! Просто отсканировал и книга уже на телефоне."
+                            </div>
+                            <div class="review-author">
+                                <div class="avatar">А</div>
+                                <div>
+                                    <h4>Анна</h4>
+                                    <p>Студентка филфака</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-text">
+                                "Идеально для нашего книжного клуба. Никаких сливов в сеть, только свои. Мы обмениваемся редкими изданиями."
+                            </div>
+                            <div class="review-author">
+                                <div class="avatar">М</div>
+                                <div>
+                                    <h4>Максим</h4>
+                                    <p>Основатель IT-стартапа</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-text">
+                                "Простота использования поражает. Бросил файл — и читаешь. Никаких лишних действий. Особенно нравится, что можно читать оффлайн."
+                            </div>
+                            <div class="review-author">
+                                <div class="avatar">К</div>
+                                <div>
+                                    <h4>Кирилл</h4>
+                                    <p>Преподаватель литературы</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-text">
+                                "Отличное решение для учебных материалов. Раздал студентам QR-код — и все получили лекции. Никаких почт, облаков, паролей."
+                            </div>
+                            <div class="review-author">
+                                <div class="avatar">Е</div>
+                                <div>
+                                    <h4>Елена</h4>
+                                    <p>Университетский профессор</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-text">
+                                "Бесплатно, приватно, без рекламы. То, чего не хватало современным читалкам. Полный контроль над своими книгами."
+                            </div>
+                            <div class="review-author">
+                                <div class="avatar">Д</div>
+                                <div>
+                                    <h4>Дмитрий</h4>
+                                    <p>Разработчик ПО</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Последняя карточка "Смотреть ещё" -->
+                        <div class="review-card see-more-card">
+                            <div class="review-text">
+                                "Узнайте, что говорят другие читатели. Присоединяйтесь к нашему сообществу приватного чтения и делитесь своими впечатлениями."
+                            </div>
+                            <div class="review-author">
+                                <div class="avatar">+</div>
+                                <div>
+                                    <h4>Больше отзывов</h4>
+                                    <p>Нажмите, чтобы увидеть больше впечатлений</p>
+                                </div>
+                            </div>
+                            <div class="see-more-btn">
+                                <a href="#reviews" class="btn-primary">Смотреть все отзывы</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="slider-dots"></div>
+                    <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно настроек для главной -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Настройки приложения</h3>
+                <button class="modal-close" id="settingsClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <h4>Автоматическое резервное копирование</h4>
+                    <label class="switch">
+                        <input type="checkbox" id="autoBackup">
+                        <span class="slider"></span>
+                    </label>
+                    <p class="setting-description">Создавать резервную копию библиотеки каждую неделю</p>
+                </div>
+                <div class="setting-group">
+                    <h4>Тема интерфейса</h4>
+                    <div class="theme-controls">
+                        <button class="theme-btn active" data-theme="dark">
+                            <div class="theme-preview dark"></div>
+                            <span>Темная</span>
+                        </button>
+                        <button class="theme-btn" data-theme="light">
+                            <div class="theme-preview light"></div>
+                            <span>Светлая</span>
+                        </button>
+                        <button class="theme-btn" data-theme="sepia">
+                            <div class="theme-preview sepia"></div>
+                            <span>Сепия</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <h4>Язык интерфейса</h4>
+                    <select class="language-select" id="languageSelect">
+                        <option value="ru">Русский</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <h4>Уведомления</h4>
+                    <label class="switch">
+                        <input type="checkbox" id="notifications" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <p class="setting-description">Показывать уведомления о новых функциях</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="resetSettings">Сбросить</button>
+                <button class="btn-primary" id="saveSettings">Сохранить настройки</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <div class="logo-icon">卷</div>
+                        <h2>墨阅</h2>
+                    </div>
+                    <p>Приватная читалка для избранных кругов. <br>Ни следов, ни слежки.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="#">Главная</a></li>
+                        <li><a href="#features">Возможности</a></li>
+                        <li><a href="#library">Библиотека</a></li>
+                        <li><a href="#reviews">Отзывы</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Помощь</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Поддержка</a></li>
+                        <li><a href="#">Написать нам</a></li>
+                        <li><a href="#">Пользовательское соглашение</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>Только для обратной связи:<br>
+                    <a href="mailto:contact@moyue.ru">contact@moyue.ru</a></p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 墨阅 (Mò Yuè). Все права на приватность защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Подключаем библиотеки -->
+    <script src="https://unpkg.com/mammoth@1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <!-- Наши скрипты -->
+    <script src="script.js"></script>
+    <script src="hotfixes.js"></script>
+</body>
+</html>

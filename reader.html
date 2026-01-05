@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru" class="reader-page">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>墨阅 | Читалка</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="color-fixes.css">
+    <link rel="stylesheet" href="reader.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="reader-theme-dark reader-page">
+    <!-- Фоновые элементы -->
+    <div class="bg-elements">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+        <div class="bg-circle circle-4"></div>
+        <div class="bg-circle circle-5"></div>
+        <div class="bg-circle circle-6"></div>
+        <div class="bg-circle circle-7"></div>
+        <div class="bg-circle circle-8"></div>
+        <div class="bg-ripple ripple-1"></div>
+        <div class="bg-ripple ripple-2"></div>
+        <div class="bg-ripple ripple-3"></div>
+        <div class="bg-ripple ripple-4"></div>
+        <div class="bg-ripple ripple-5"></div>
+        <div class="bg-bubble bubble-1"></div>
+        <div class="bg-bubble bubble-2"></div>
+        <div class="bg-bubble bubble-3"></div>
+        <div class="bg-bubble bubble-4"></div>
+        <div class="bg-wave"></div>
+        <div class="bg-paper-texture"></div>
+    </div>
+
+    <!-- Хедер -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo-link">
+                    <div class="logo">
+                        <div class="logo-icon">卷</div>
+                        <h1>墨阅</h1>
+                    </div>
+                </a>
+                <div class="reader-header-controls">
+                    <button class="reader-btn" id="backBtn">
+                        <i class="fas fa-arrow-left"></i> Назад
+                    </button>
+                    <div class="reader-progress-info" id="progressInfo">
+                        <span>Прогресс: <span id="progressPercent">0%</span></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основной контент читалки -->
+    <main class="reader-main">
+        <div class="container">
+            <div class="reader-container">
+                <!-- Информация о книге -->
+                <div class="book-header" id="bookHeader">
+                    <h1 id="bookTitle">Загрузка...</h1>
+                    <div class="book-meta-info">
+                        <span id="bookAuthor">Автор неизвестен</span>
+                        <span class="book-format-tag" id="bookFormat">TXT</span>
+                    </div>
+                </div>
+                
+                <!-- Контент книги -->
+                <div class="reader-content-wrapper">
+                    <div class="reader-content" id="readerContent">
+                        <p>Загрузка книги...</p>
+                    </div>
+                </div>
+                
+                <!-- Управление чтением -->
+                <div class="reading-controls">
+                    <div class="page-controls">
+                        <button class="page-btn" id="prevPage">
+                            <i class="fas fa-chevron-left"></i> Назад
+                        </button>
+                        <div class="page-info">
+                            <span id="currentPage">1</span> / <span id="totalPages">1</span>
+                        </div>
+                        <button class="page-btn" id="nextPage">
+                            Вперед <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar reading-progress">
+                            <div class="progress-fill" id="readingProgressFill"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="reader-tools">
+                        <button class="tool-btn" id="bookmarkBtn" title="Добавить закладку">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                        <button class="tool-btn" id="searchBtn" title="Поиск по тексту">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <button class="tool-btn" id="settingsBtn" title="Настройки чтения">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Модальное окно настроек -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Настройки чтения</h3>
+                <button class="modal-close" id="settingsClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <h4>Размер шрифта</h4>
+                    <div class="font-size-controls">
+                        <button class="font-size-btn" data-size="small">A-</button>
+                        <button class="font-size-btn active" data-size="medium">A</button>
+                        <button class="font-size-btn" data-size="large">A+</button>
+                        <button class="font-size-btn" data-size="xlarge">A++</button>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <h4>Цветовая тема</h4>
+                    <div class="theme-controls">
+                        <button class="theme-btn active" data-theme="dark">
+                            <div class="theme-preview dark"></div>
+                            <span>Темная</span>
+                        </button>
+                        <button class="theme-btn" data-theme="light">
+                            <div class="theme-preview light"></div>
+                            <span>Светлая</span>
+                        </button>
+                        <button class="theme-btn" data-theme="sepia">
+                            <div class="theme-preview sepia"></div>
+                            <span>Сепия</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <h4>Межстрочный интервал</h4>
+                    <div class="spacing-controls">
+                        <button class="spacing-btn" data-spacing="tight">Узкий</button>
+                        <button class="spacing-btn active" data-spacing="normal">Нормальный</button>
+                        <button class="spacing-btn" data-spacing="wide">Широкий</button>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <h4>Шрифт</h4>
+                    <select class="font-select" id="fontSelect">
+                        <option value="Inter">Inter (Стандартный)</option>
+                        <option value="Merriweather">Merriweather</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Arial">Arial</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="resetSettings">Сбросить</button>
+                <button class="btn-primary" id="saveSettings">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно поиска -->
+    <div class="modal" id="searchModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Поиск по тексту</h3>
+                <button class="modal-close" id="searchClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-input-group">
+                    <input type="text" id="searchInput" placeholder="Введите текст для поиска...">
+                    <button class="btn-small" id="searchNext">
+                        <i class="fas fa-search"></i> Найти
+                    </button>
+                </div>
+                <div class="search-results" id="searchResults">
+                    <!-- Результаты поиска будут здесь -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="reader.js"></script>
+    <script src="hotfixes.js"></script>
+</body>
+</html>

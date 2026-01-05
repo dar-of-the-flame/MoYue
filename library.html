@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ru" class="library-page">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>墨阅 | Библиотека</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="color-fixes.css">
+    <link rel="stylesheet" href="library.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- PDF.js библиотеки -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf_viewer.min.css">
+</head>
+<body class="library-page">
+    <!-- Фоновые элементы с дополнительными кругами -->
+    <div class="bg-elements">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+        <div class="bg-circle circle-4"></div>
+        <div class="bg-circle circle-5"></div>
+        <div class="bg-circle circle-6"></div>
+        <div class="bg-circle circle-7"></div>
+        <div class="bg-circle circle-8"></div>
+        <div class="bg-ripple ripple-1"></div>
+        <div class="bg-ripple ripple-2"></div>
+        <div class="bg-ripple ripple-3"></div>
+        <div class="bg-ripple ripple-4"></div>
+        <div class="bg-ripple ripple-5"></div>
+        <div class="bg-bubble bubble-1"></div>
+        <div class="bg-bubble bubble-2"></div>
+        <div class="bg-bubble bubble-3"></div>
+        <div class="bg-bubble bubble-4"></div>
+        <div class="bg-bubble bubble-5"></div>
+        <div class="bg-bubble bubble-6"></div>
+        
+        <!-- Китайские иероглифы -->
+        <div class="bg-brush brush-1">書</div>
+        <div class="bg-brush brush-2">墨</div>
+        <div class="bg-brush brush-3">閱</div>
+        <div class="bg-brush brush-4">讀</div>
+        
+        <!-- Дополнительные линии -->
+        <div class="bg-line line-1"></div>
+        <div class="bg-line line-2"></div>
+        <div class="bg-line line-3"></div>
+        <div class="bg-line line-4"></div>
+        <div class="bg-line line-5"></div>
+        
+        <div class="bg-wave"></div>
+        <div class="bg-paper-texture"></div>
+    </div>
+
+    <!-- Хедер только с логотипом и настройками -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo-link">
+                    <div class="logo">
+                        <div class="logo-icon">卷</div>
+                        <h1>墨阅</h1>
+                    </div>
+                </a>
+                <div class="settings-toggle" id="settingsToggle">
+                    <i class="fas fa-cog"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основной контент библиотеки -->
+    <main class="library-main">
+        <div class="container">
+            <!-- Заголовок и управление -->
+            <div class="library-header">
+                <h2 class="section-title">Ваша приватная библиотека</h2>
+                <button class="import-floating-btn" onclick="openImportModal()">
+                    <i class="fas fa-qrcode"></i> Импорт книги
+                </button>
+                <div class="library-controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Поиск по книгам..." autocomplete="off">
+                    </div>
+                    <div class="sort-controls">
+                        <select id="sortSelect">
+                            <option value="date-desc">По дате (сначала новые)</option>
+                            <option value="date-asc">По дате (сначала старые)</option>
+                            <option value="title-asc">По названию (А-Я)</option>
+                            <option value="title-desc">По названию (Я-А)</option>
+                            <option value="progress-desc">По прогрессу чтения</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Зона загрузки -->
+            <div class="upload-section">
+                <div class="upload-zone advanced" id="uploadZone">
+                    <div class="upload-content">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Перетащите книги сюда</h3>
+                        <p>Поддерживаемые форматы с полной обработкой</p>
+                        
+                        <div class="format-info">
+                            <div class="format-info-item">
+                                <div class="format-info-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="format-info-text">
+                                    <h4>TXT</h4>
+                                    <p>Простой текст</p>
+                                </div>
+                            </div>
+                            <div class="format-info-item">
+                                <div class="format-info-icon">
+                                    <i class="fas fa-file-word"></i>
+                                </div>
+                                <div class="format-info-text">
+                                    <h4>DOCX</h4>
+                                    <p>Word документы</p>
+                                </div>
+                            </div>
+                            <div class="format-info-item">
+                                <div class="format-info-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="format-info-text">
+                                    <h4>PDF</h4>
+                                    <p>С текстовым извлечением</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="upload-hint">Или нажмите для выбора файлов (макс. 50MB)</p>
+                        <input type="file" id="fileInput" multiple accept=".txt,.docx,.pdf" style="display: none;">
+                    </div>
+                </div>
+                <div class="upload-progress advanced" id="uploadProgress" style="display: none;">
+                    <div class="progress-header">
+                        <h4>Обработка файлов</h4>
+                        <div class="progress-stats">
+                            <span>Обработано: <span id="processedCount">0</span></span>
+                            <span>Ошибок: <span id="errorCount">0</span></span>
+                            <span>Размер: <span id="totalSize">0 MB</span></span>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-files" id="progressFiles">
+                        <!-- Файлы будут добавляться здесь -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Сетка книг -->
+            <div class="library-grid" id="libraryGrid">
+                <div class="empty-library" id="emptyLibrary">
+                    <div class="empty-icon">
+                        <i class="fas fa-books"></i>
+                    </div>
+                    <h3>Библиотека пуста</h3>
+                    <p>Загрузите свою первую книгу, чтобы начать чтение</p>
+                    <button class="btn-primary" id="uploadFirstBook">Загрузить книгу</button>
+                </div>
+                <!-- Книги будут добавляться сюда через JS -->
+            </div>
+
+            <!-- Статистика -->
+            <div class="library-stats" id="libraryStats" style="display: none;">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4 id="totalBooks">0</h4>
+                        <p>Всего книг</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4 id="totalReadingTime">0ч</h4>
+                        <p>Время чтения</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4 id="avgProgress">0%</h4>
+                        <p>Средний прогресс</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4 id="totalSize">0 МБ</h4>
+                        <p>Общий размер</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Модальное окно настроек -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Настройки библиотеки</h3>
+                <button class="modal-close" id="settingsClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <h4>Автоматическое резервное копирование</h4>
+                    <label class="switch">
+                        <input type="checkbox" id="autoBackup">
+                        <span class="slider"></span>
+                    </label>
+                    <p class="setting-description">Создавать резервную копию библиотеки каждую неделю</p>
+                </div>
+                <div class="setting-group">
+                    <h4>Показывать предпросмотр</h4>
+                    <label class="switch">
+                        <input type="checkbox" id="showPreview" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <p class="setting-description">Показывать превью книги при наведении</p>
+                </div>
+                <div class="setting-group">
+                    <h4>Автоматически открывать последнюю книгу</h4>
+                    <label class="switch">
+                        <input type="checkbox" id="autoOpenLast">
+                        <span class="slider"></span>
+                    </label>
+                    <p class="setting-description">При входе в читалку открывать последнюю читаемую книгу</p>
+                </div>
+                <div class="setting-group">
+                    <h4>Сохранять сессию чтения</h4>
+                    <label class="switch">
+                        <input type="checkbox" id="saveSession" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <p class="setting-description">Запоминать место, где вы остановились</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="exportLibrary">Экспорт библиотеки</button>
+                <button class="btn-primary" id="saveSettings">Сохранить настройки</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно информации о книге -->
+    <div class="modal" id="bookInfoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Информация о книге</h3>
+                <button class="modal-close" id="bookInfoClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="book-info-modal">
+                    <div class="book-cover-large">
+                        <div class="cover-placeholder" id="modalCoverPlaceholder">
+                            <span id="modalCoverText">書</span>
+                        </div>
+                    </div>
+                    <div class="book-details">
+                        <h4 id="modalBookTitle">Название книги</h4>
+                        <div class="book-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-file-alt"></i>
+                                <span id="modalBookFormat">TXT</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span id="modalBookDate">01.01.2024</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-weight-hanging"></i>
+                                <span id="modalBookSize">1.2 МБ</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-font"></i>
+                                <span id="modalBookChars">10,000 знаков</span>
+                            </div>
+                        </div>
+                        <div class="progress-info">
+                            <div class="progress-header">
+                                <span>Прогресс чтения</span>
+                                <span id="modalBookProgress">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="modalProgressFill"></div>
+                            </div>
+                        </div>
+                        <div class="book-description">
+                            <h5>Описание</h5>
+                            <p id="modalBookDescription">Описание отсутствует. Вы можете добавить его в настройках книги.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-small btn-danger" id="deleteBook">Удалить книгу</button>
+                <button class="btn-small" id="editBook">Редактировать</button>
+                <button class="btn-primary" id="readBook">Читать</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно QR-шаринга -->
+    <div class="modal" id="shareModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Поделиться книгой</h3>
+                <button class="modal-close" id="shareClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="share-container">
+                    <div class="share-header">
+                        <h4 id="shareBookTitle">Название книги</h4>
+                        <p class="share-book-info" id="shareBookInfo">Автор: Неизвестный автор</p>
+                    </div>
+                    
+                    <div class="qr-section">
+                        <div class="qr-container" id="qrContainer">
+                            <!-- QR-код будет сгенерирован здесь -->
+                            <div class="qr-placeholder">
+                                <i class="fas fa-qrcode"></i>
+                                <p>Генерация QR-кода...</p>
+                            </div>
+                        </div>
+                        <div class="qr-controls">
+                            <button class="btn-small" id="downloadQR">
+                                <i class="fas fa-download"></i> Сохранить QR
+                            </button>
+                            <button class="btn-small" id="copyQR">
+                                <i class="fas fa-copy"></i> Копировать ссылку
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="share-link-section">
+                        <h5>Ссылка для передачи</h5>
+                        <div class="link-input-group">
+                            <input type="text" id="shareLink" readonly placeholder="Ссылка появится здесь...">
+                            <button class="btn-small" id="copyLink">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <p class="share-hint">
+                            Отправьте эту ссылку или QR-код другу. При переходе по ссылке книга автоматически добавится в его библиотеку.
+                        </p>
+                    </div>
+                    
+                    <div class="share-options">
+                        <h5>Настройки передачи</h5>
+                        <div class="share-options-grid">
+                            <div class="share-option">
+                                <label class="switch">
+                                    <input type="checkbox" id="shareCompress" checked>
+                                    <span class="slider"></span>
+                                </label>
+                                <span>Сжатие данных</span>
+                            </div>
+                            <div class="share-option">
+                                <label class="switch">
+                                    <input type="checkbox" id="shareEncrypt" checked>
+                                    <span class="slider"></span>
+                                </label>
+                                <span>Шифрование</span>
+                            </div>
+                            <div class="share-option">
+                                <label class="switch">
+                                    <input type="checkbox" id="shareExpire">
+                                    <span class="slider"></span>
+                                </label>
+                                <span>Истечение через 24 часа</span>
+                            </div>
+                            <div class="share-option">
+                                <label class="switch">
+                                    <input type="checkbox" id="sharePassword">
+                                    <span class="slider"></span>
+                                </label>
+                                <span>Защита паролем</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="share-limits">
+                        <h5>Ограничения</h5>
+                        <div class="limit-control">
+                            <label>Максимальное количество скачиваний:</label>
+                            <select id="maxDownloads">
+                                <option value="1">1</option>
+                                <option value="5">5</option>
+                                <option value="10" selected>10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="0">Без ограничений</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="session-info" id="sessionLink">
+                        <!-- Информация о сессии будет здесь -->
+                    </div>
+                    
+                    <div class="session-controls">
+                        <button class="btn-small" id="viewSessions">
+                            <i class="fas fa-history"></i> Мои сессии
+                        </button>
+                        <button class="btn-small btn-danger" id="revokeSession">
+                            <i class="fas fa-ban"></i> Отозвать доступ
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="closeShare">Закрыть</button>
+                <button class="btn-primary" id="generateNewQR">
+                    <i class="fas fa-sync-alt"></i> Обновить QR
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно импорта по QR/ссылке -->
+    <div class="modal" id="importModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Импорт книги</h3>
+                <button class="modal-close" id="importClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="import-tabs">
+                    <button class="import-tab active" data-tab="link">По ссылке</button>
+                    <button class="import-tab" data-tab="qr">QR-код</button>
+                    <button class="import-tab" data-tab="file">Файл данных</button>
+                </div>
+                
+                <div class="import-content">
+                    <!-- Вкладка ссылки -->
+                    <div class="import-tab-content active" id="linkTab">
+                        <div class="import-link-section">
+                            <input type="text" id="importLink" placeholder="Вставьте ссылку на книгу...">
+                            <button class="btn-primary" id="importFromLink">
+                                <i class="fas fa-download"></i> Импортировать
+                            </button>
+                        </div>
+                        <p class="import-hint">
+                            Вставьте ссылку, которую вам отправили. Книга будет добавлена в вашу библиотеку.
+                        </p>
+                    </div>
+                    
+                    <!-- Вкладка QR-кода -->
+                    <div class="import-tab-content" id="qrTab">
+                        <div class="qr-scanner-section">
+                            <div class="qr-scanner-placeholder" id="qrScanner">
+                                <i class="fas fa-camera"></i>
+                                <p>Наведите камеру на QR-код</p>
+                                <button class="btn-secondary" id="startCamera">
+                                    <i class="fas fa-video"></i> Включить камеру
+                                </button>
+                            </div>
+                            <div class="qr-upload-section">
+                                <p>Или загрузите изображение с QR-кодом</p>
+                                <div class="qr-upload-zone" id="qrUpload">
+                                    <i class="fas fa-file-upload"></i>
+                                    <p>Перетащите изображение сюда</p>
+                                    <input type="file" id="qrFile" accept="image/*" style="display: none;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Вкладка файла -->
+                    <div class="import-tab-content" id="fileTab">
+                        <div class="import-file-section">
+                            <div class="file-upload-zone" id="dataFileUpload">
+                                <i class="fas fa-file-code"></i>
+                                <p>Перетащите файл .moyue сюда</p>
+                                <p class="file-hint">Или нажмите для выбора файла</p>
+                                <input type="file" id="dataFile" accept=".moyue,.json" style="display: none;">
+                            </div>
+                            <p class="import-hint">
+                                Файлы .moyue содержат зашифрованные данные книг для передачи.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="import-progress" id="importProgress" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="importProgressFill"></div>
+                    </div>
+                    <p id="importStatus">Обработка данных...</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelImport">Отмена</button>
+                <button class="btn-primary" id="confirmImport" disabled>
+                    <i class="fas fa-book-medical"></i> Добавить в библиотеку
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <div class="logo-icon">卷</div>
+                        <h2>墨阅</h2>
+                    </div>
+                    <p>Приватная читалка для избранных кругов. <br>Ни следов, ни слежки.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="library.html">Библиотека</a></li>
+                        <li><a href="reader.html">Читалка</a></li>
+                        <li><a href="#features">Возможности</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Поддержка</h3>
+                    <ul>
+                        <li><a href="#">Как загрузить книги?</a></li>
+                        <li><a href="#">Форматы файлов</a></li>
+                        <li><a href="#">Частые вопросы</a></li>
+                        <li><a href="#">Сообщить о проблеме</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>Только для обратной связи:<br>
+                    <a href="mailto:contact@moyue.ru">contact@moyue.ru</a></p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 墨阅 (Mò Yuè). Все книги хранятся только в вашем браузере.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Подключаем библиотеки -->
+    <script src="https://unpkg.com/mammoth@1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <!-- Наши скрипты -->
+    <script src="qr-share.js"></script>
+    <script src="library.js"></script>
+    <script src="script.js"></script>
+    <script src="hotfixes.js"></script>
+    <script src="file-upload.js"></script>
+</body>
+</html>
